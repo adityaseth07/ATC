@@ -1263,7 +1263,264 @@
     .team-avatar { width: 52px; height: 52px; font-size: 1rem; }
     .team-name { font-size: 0.88rem; }
     .team-branch { font-size: 0.72rem; }
-    .team-college { font-size: 0.62rem; padding: 2px 8px; }
+    .team-college { font-size: 0.62px; padding: 2px 8px; }
+  }
+
+  /* ── FLASH NEWS TICKER ── */
+  .flash-ticker {
+    background: linear-gradient(90deg, #0a1628, #0f1e35, #0a1628);
+    border-top: 1px solid rgba(239,68,68,0.25);
+    border-bottom: 1px solid rgba(239,68,68,0.25);
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+
+  .flash-ticker::before {
+    content: '🔴 LIVE';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: rgba(239,68,68,0.9);
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    padding-left: 100px;
+    animation: ticker-scroll 28s linear infinite;
+    white-space: nowrap;
+    will-change: transform;
+  }
+
+  .ticker-track:hover { animation-play-state: paused; }
+
+  @keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text2);
+    padding: 0 32px;
+    border-right: 1px solid rgba(99,179,237,0.15);
+  }
+
+  .ticker-item .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #f87171;
+    flex-shrink: 0;
+    animation: pulse-dot 1.8s infinite;
+  }
+
+  .ticker-item strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── FLASH NEWS CARDS ── */
+  .flash-section {
+    padding: 56px 5% 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .flash-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .flash-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: #f87171;
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .flash-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #f87171;
+    border-radius: 50%;
+    animation: pulse-dot 1.5s infinite;
+  }
+
+  .flash-title {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text2);
+    letter-spacing: -0.01em;
+  }
+
+  .flash-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .flash-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+
+  .flash-card:hover {
+    border-color: rgba(239,68,68,0.35);
+    transform: translateY(-3px);
+  }
+
+  .flash-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ef4444, #f97316);
+  }
+
+  .flash-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 0.75rem;
+  }
+
+  .flash-inst-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .badge-red   { background: rgba(239,68,68,0.12);  color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+  .badge-blue  { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+  .badge-teal  { background: rgba(20,184,166,0.12); color: #2dd4bf; border: 1px solid rgba(20,184,166,0.2); }
+
+  .flash-new-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: #ef4444;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .flash-card h3 {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+
+  .flash-card p {
+    font-size: 0.83rem;
+    color: var(--text2);
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .flash-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 1.25rem;
+  }
+
+  .flash-bullets li {
+    font-size: 0.8rem;
+    color: var(--text2);
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    line-height: 1.5;
+  }
+
+  .flash-bullets li::before {
+    content: '▸';
+    color: var(--teal);
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    margin-top: 1px;
+  }
+
+  .flash-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent2);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: gap 0.2s, color 0.2s;
+  }
+
+  .flash-cta-link:hover {
+    color: var(--text);
+    gap: 10px;
+  }
+
+  .flash-urgent {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(239,68,68,0.07);
+    border: 1px solid rgba(239,68,68,0.18);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-top: 0.75rem;
+    font-size: 0.78rem;
+    color: #fca5a5;
+  }
+
+  @media (max-width: 768px) {
+    .flash-cards { grid-template-columns: 1fr; }
+    .flash-ticker::before { font-size: 0.62rem; padding: 0 10px; }
+    .ticker-item { font-size: 0.76rem; padding: 0 20px; }
   }
 </style>
 </head>
@@ -1365,6 +1622,104 @@
     <div class="trust-item">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       Plans starting ₹99 only
+    </div>
+  </div>
+
+  <!-- ── FLASH NEWS TICKER ── -->
+  <div class="flash-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="dot"></span> <strong>GGSIPU 2026</strong> Counselling registrations OPEN — Delhi colleges now accepting applications</span>
+      <span class="ticker-item"><span class="dot"></span> <strong>Jamia Millia Islamia</strong> B.Tech admissions 2026 registration started — apply now</span>
+      <span class="ticker-item"><span class="dot"></span> <strong>Thapar University</strong> 2026 admissions open — JEE Main score accepted</span>
+      <span class="ticker-item"><span class="dot"></span> <strong>GGSIPU 2026</strong> Counselling registrations OPEN — Delhi colleges now accepting applications</span>
+      <span class="ticker-item"><span class="dot"></span> <strong>Jamia Millia Islamia</strong> B.Tech admissions 2026 registration started — apply now</span>
+      <span class="ticker-item"><span class="dot"></span> <strong>Thapar University</strong> 2026 admissions open — JEE Main score accepted</span>
+    </div>
+  </div>
+
+  <!-- ── FLASH NEWS CARDS ── -->
+  <div class="flash-section">
+    <div class="flash-header">
+      <div class="flash-badge">Breaking Now</div>
+      <span class="flash-title">Counselling Registrations Open — Don't miss deadlines</span>
+    </div>
+
+    <div class="flash-cards">
+
+      <!-- GGSIPU -->
+      <div class="flash-card">
+        <div class="flash-card-top">
+          <span class="flash-inst-badge badge-red">GGSIPU · Delhi</span>
+          <span class="flash-new-tag">OPEN</span>
+        </div>
+        <h3>🚨 GGSIPU Counselling 2026 Started</h3>
+        <p>IPU counselling registration is officially live. If you're targeting Delhi colleges like MAIT, MSIT, USICT, or BPIT — register now to stay eligible for seat allotment.</p>
+        <ul class="flash-bullets">
+          <li>~85% seats reserved for Delhi region candidates in most colleges</li>
+          <li>Outside-Delhi students still eligible via All India quota (~15%)</li>
+          <li>Top CS/IT colleges with placement records rivalling lower NITs</li>
+          <li>Best backup option after JoSAA — don't skip it</li>
+        </ul>
+        <a href="https://admissions.nic.in/IPUADM/Applicant/Root/home.aspx?enc=yVQCIiq12npg+pcvNJRdc0YTdqI/r6UpNtHUkVddWy9SG879809gkErWCjQnR+tD+ZL5AF8JuNgAQDgVlpnnSw==" target="_blank" class="flash-cta-link">
+          Register on official portal →
+        </a>
+        <div class="flash-urgent">
+          ⚠️ Missing registration = losing a solid backup college option
+        </div>
+      </div>
+
+      <!-- Jamia -->
+      <div class="flash-card">
+        <div class="flash-card-top">
+          <span class="flash-inst-badge badge-blue">Jamia · Delhi</span>
+          <span class="flash-new-tag">OPEN</span>
+        </div>
+        <h3>📌 Jamia Millia Islamia Admissions 2026</h3>
+        <p>Jamia Millia Islamia B.Tech registration is open. A central university in Delhi with strong engineering programmes — often overlooked but genuinely underrated.</p>
+        <ul class="flash-bullets">
+          <li>Central university — good infrastructure and faculty quality</li>
+          <li>Strong CS, ECE, and Civil engineering departments</li>
+          <li>Delhi location = excellent internship and placement access</li>
+          <li>EWS and OBC reservations apply — check category cutoffs</li>
+        </ul>
+        <a href="https://admission.jmi.ac.in/UniversityApplicationForm/UniversityRegularAdmission?UID=mTZDVQ==&rtextsess=6EIkM1Fa7w==&rtextscun=jzw=" target="_blank" class="flash-cta-link">
+          Apply at admission.jmi.ac.in →
+        </a>
+        <div class="flash-urgent">
+          ⚠️ Limited seats — early registration recommended
+        </div>
+      </div>
+
+      <!-- Thapar -->
+      <div class="flash-card">
+        <div class="flash-card-top">
+          <span class="flash-inst-badge badge-teal">Thapar · Patiala</span>
+          <span class="flash-new-tag">OPEN</span>
+        </div>
+        <h3>🎓 Thapar University Admissions 2026</h3>
+        <p>Thapar University — one of the top private engineering universities in North India — has opened admissions for 2026. JEE Main score is a primary criterion.</p>
+        <ul class="flash-bullets">
+          <li>Top private university — consistently ranked in NIRF top 50</li>
+          <li>Exceptional CS/IT placements, strong alumni in top MNCs</li>
+          <li>JEE Main score weighted heavily — a good score opens real doors</li>
+          <li>Patiala campus — well connected to Chandigarh & Delhi NCR</li>
+        </ul>
+        <a href="https://admission.thapar.edu/" target="_blank" class="flash-cta-link">
+          Apply at admission.thapar.edu →
+        </a>
+        <div class="flash-urgent">
+          ⚠️ Seats fill fast — higher JEE score = better branch allocation
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:1.25rem; padding: 14px 18px; background: rgba(20,184,166,0.06); border: 1px solid rgba(20,184,166,0.18); border-radius: 10px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <span style="font-size:0.85rem; color:var(--text2);">Need help with choice filling for any of these? Our mentors cover all these counsellings.</span>
+      <a href="https://t.me/ATC_counselling" target="_blank" style="font-size:0.82rem; font-weight:500; color:var(--teal); text-decoration:none; white-space:nowrap; display:flex; align-items:center; gap:5px; transition:color 0.2s;">
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;flex-shrink:0;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.069l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.658 4.24 12.74c-.658-.204-.672-.658.136-.976l10.874-4.19c.548-.196 1.027.122.852.495z"/></svg>
+        Ask us on Telegram →
+      </a>
     </div>
   </div>
 
